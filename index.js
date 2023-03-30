@@ -1,9 +1,12 @@
-const http = require(‘http’);
-const hostname = ‘localhost’;
-const port = 3000;
+const http = require('http');
+const port = process.env.PORT || 3000;
+
 const server = http.createServer((req, res) => {
- console.log(req.headers);
- res.statusCode = 200;
- res.end(‘<html><body><h1>Hello, World!</h1></body></html>’);
-})
-server.listen(port, hostname);
+  res.statusCode = 200;
+  const msg = 'Hello Node!\n'
+  res.end(msg);
+});
+
+server.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}/`);
+});
